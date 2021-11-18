@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="js/jquery-2.1.3.min.js"></script>
+<link rel="stylesheet" href="css/sample.css">
+<title>じゃんけん</title>
+</head>
+<body>
+
+<header>
+  <h1 id="echo1">最初はグー</h1>
+  <h1>じゃんけん</h1>
+</header>
+
+<main>
+  <ul>
+    <li id="gu_btn">グー</li>
+    <li id="cho_btn">チョキ</li>
+    <li id="par_btn">パー</li>
+  </ul>
+  <div>コンピュータの出した手は？「<span id="pc_hands">なに？</span>」</div>
+  <div id="judgment"></div>
+</main>
+
+<footer></footer>
+<script>
+//じゃんけん用のSCRIPTを書いてください
+$("#echo1").fadeOut(1000).fadeIn(1000000);
+$("#gu_btn").on("click",function(){
+  const span = Math.ceil (Math.random() * 3);
+    if(span == 1){
+      //$("#pc_hands").html("<p>グー</p>");
+      $("#pc_hands").html('<img src="gu.png" width="70">',);
+      $("#judgment").html("あいこ");
+      $("#judgment").css("color","#808080");
+    }
+    if(span == 2){
+      //$("#pc_hands").html("<p>チョキ</p>");
+      $("#pc_hands").html('<img src="choki.png" width="70">',);
+      $("#judgment").html("あなたの勝ち");
+      $("#judgment").css("color","#f4a583");
+    }
+    if(span == 3){
+      //$("#pc_hands").html("<p>パー</p>");
+      $("#pc_hands").html('<img src="par.png" width="70">',);
+      $("#judgment").html("あなたの負け");
+      $("#judgment").css("color","#89c3ed");
+    }
+ })
+
+ $("#cho_btn").on("click",function(){
+  const span = Math.ceil (Math.random() * 3);
+    if(span == 1){
+      //$("#pc_hands").html("<p>グー</p>");
+      $("#pc_hands").html('<img src="gu.png" width="70">',);
+      $("#judgment").html("あなたの負け");
+      $("#judgment").css("color","#89c3ed");
+    }
+    if(span == 2){
+      //$("#pc_hands").html("<p>チョキ</p>");
+      $("#pc_hands").html('<img src="choki.png" width="70">',);
+      $("#judgment").html("あいこ");
+      $("#judgment").css("color","#808080");
+    }
+    if(span == 3){
+      //$("#pc_hands").html("<p>パー</p>");
+      $("#pc_hands").html('<img src="par.png" width="70">',);
+      $("#judgment").html("あなたの勝ち");
+      $("#judgment").css("color","#f4a583");
+    }
+ })
+
+ $("#par_btn").on("click",function(){
+  const span = Math.ceil (Math.random() * 3);
+    if(span == 1){
+      //$("#pc_hands").html("<p>グー</p>");
+      $("#pc_hands").html('<img src="gu.png" width="70">',);
+      $("#judgment").html("あなたの勝ち");
+      $("#judgment").css("color","#f4a583");
+    }
+    if(span == 2){
+      //$("#pc_hands").html("<p>チョキ</p>");
+      $("#pc_hands").html('<img src="choki.png" width="70">',);
+      $("#judgment").html("あなたの負け");
+      $("#judgment").css("color","#89c3ed");
+    }
+    if(span == 3){
+      //$("#pc_hands").html("<p>パー</p>");
+      $("#pc_hands").html('<img src="par.png" width="70">',);
+      $("#judgment").html("あいこ");
+      $("#judgment").css("color","#808080");
+    }
+ })
+
+</script>
+</body>
+</html>
