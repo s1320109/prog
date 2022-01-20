@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/sample.css">
+  <title>クイズ練習（複数）</title>
+</head>
+
+<body>
+  <div class="background border"></div>
+</body>
+
+<header>
+  <div>
+    <h1>『ももたろう』</h1>
+  </div>
+  <div class="box1">
+    <h3>❥があったら「push」を押す</h3>
+  </div>
+    <h2 id="story">物語り</h2>
+</header>
+
+<main>
+  <div class="box2">
+    <h4 class="box-title" id="quest">ここに問題が出題されます</h4>
+    <p>Qestion</p>
+  </div>
+
+  <p>
+    <input type="radio" name="toi" value="1"><span id="toi1">選択肢１</span>
+    <input type="radio" name="toi" value="2"><span id="toi2">選択肢２</span>
+    <input type="radio" name="toi" value="3"><span id="toi3">選択肢３</span>
+  </p>
+  <footer id="pull">push</footer>
+
+  <div class="pic"> 
+    <p id="echo"></p>
+  </div>
+</main>
+
+
+<script>
+//ここから記述領域［START］
+
+  //以下に配列を記述してください。
+
+
+  let count =0;
+  $("#pull").on("click",function(){
+    // 乱数を創る
+    count++;
+    const num = Math.ceil (count);
+        if(num == 1){
+          $("#echo").html('<img src=img/oji.jpg width="800">');
+        }
+        if(num == 2){
+          $("#echo").html('<img src=img/kawa.jpg width="800">');
+        }
+        if(num == 3){
+          $("#echo").html('<img src=img/kaeru.jpg width="800">');
+        }
+        if(num == 4){
+          $("#echo").html('<img src=img/kiru.jpg width="800">');
+        }
+        if(num == 5){
+          $("#echo").html('<img src=img/momota.jpg width="800">');
+        }
+        if(num == 6){
+          $("#echo").html('<img src=img/go.jpg width="800">');
+        }
+        if(num == 7){
+          $("#echo").html('<img src=img/nakama.jpg width="800">');
+        }
+        if(num == 8){
+          $("#echo").html('<img src=img/oni.jpg width="800">');
+        }
+        if(num == 9){
+          $("#echo").html('<img src=img/win.jpg width="800">');
+        }
+  }); 
+
+  //問題文[配列]
+const qs = [
+  "おばあさんが川で洗濯をしていると大きな何が流れてきた？",
+  "家に持ち帰り、桃を切ろうとすると何が起きた？",
+  "そこで、おばあさんが渡した食べ物は何？",
+  "最後に家来になったのは何？",
+  "桃太郎たちは鬼に勝つことができたか？",
+];
+
+//物語[配列]
+const st = [
+  "❥むかし、むかし、ある所におじいさんとおばあさんが住んでいました。おじいさんは山へしば刈りに、❥おばあさんは川へ洗濯に行きました。",
+  "「なんと大きな桃じゃろう！❥家に持って帰ろう。」❥",
+  "❥その子は”桃太郎”と名づけられ大きく育ちました。❥そして、鬼退治二行くと言い出しました。",
+  "❥桃太郎が鬼ヶ島へ行く途中に「桃太郎さん、袋の中に何が入っているんだい。」「僕に一つくれればお伴します。」と犬、猿がやってきて家来となりました。",
+  "鬼ケ島に着くと、お城の門の前に、大きな鬼が立っており、❥みんなの協力で倒しましたがその後、ついに大きな鬼があらわれました。❥",
+];
+
+    
+  //回答選択肢[多重配列]
+const toi =[
+  ["もも","みかん","りんご"],
+  ["女の子がでてきた","男の子がでてきた","普通の桃だった"],
+  ["三色団子","みたらし団子","きび団子"],
+  ["ツバメ","キジ","ウグイス"],
+  ["できなかった","引き分け","できた"],
+];
+    
+  //答え[配列]
+const ans = [1,2,3,2,3];
+
+  //1.最初の問題文＆回答選択肢＆回答値を設定
+let i = 0;
+$("#quest").text(qs[i]);
+$("#story").text(st[i]);
+$("#toi1").text(toi[i][0]);
+$("#toi2").text(toi[i][1]);
+$("#toi3").text(toi[i][2]);
+$("#toi4").text(toi[i][3]);
+$("#toi5").text(toi[i][4]);
+
+
+  //2.ラジオボタンをクリックしたらイベント発生！(クリックイベント)
+  $("[name=toi]").on("click",function(){
+        const v = $(this).val();
+        let t = 0;
+        if(ans[i] == v){
+          $("h1").text("正解!");
+          t++;
+        }else{
+          $("h1").text("不正解");
+        }
+
+        if(i < 5){
+        i++;
+        }
+
+        if(i == 5){
+          $("h1").text("終了");
+        }
+
+        $("#story").text(st[i]);
+        $("#quest").text(qs[i]);
+        $("#toi1").text(toi[i][0]);
+        $("#toi2").text(toi[i][1]);
+        $("#toi3").text(toi[i][2]);
+        $("#toi4").text(toi[i][3]);
+
+        // $("h1").text("終了");
+    })
+
+
+
+
+
+
+
+
+
+
+//ここまでが記述領域［END］
+</script>
+</body>
+</html>
